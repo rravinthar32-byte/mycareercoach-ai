@@ -11,8 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnalysisRouteImport } from './routes/analysis'
+import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as JobPrepRouteImport } from './routes/job-prep'
+import { Route as LearningPlanRouteImport } from './routes/learning-plan'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RecommendationsRouteImport } from './routes/recommendations'
+import { Route as SkillGapRouteImport } from './routes/skill-gap'
 import { Route as SkillsRouteImport } from './routes/skills'
 
 const IndexRoute = IndexRouteImport.update({
@@ -25,6 +29,21 @@ const AnalysisRoute = AnalysisRouteImport.update({
   path: '/analysis',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobPrepRoute = JobPrepRouteImport.update({
+  id: '/job-prep',
+  path: '/job-prep',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearningPlanRoute = LearningPlanRouteImport.update({
+  id: '/learning-plan',
+  path: '/learning-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -33,6 +52,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const RecommendationsRoute = RecommendationsRouteImport.update({
   id: '/recommendations',
   path: '/recommendations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillGapRoute = SkillGapRouteImport.update({
+  id: '/skill-gap',
+  path: '/skill-gap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SkillsRoute = SkillsRouteImport.update({
@@ -44,39 +68,82 @@ const SkillsRoute = SkillsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
+  '/assistant': typeof AssistantRoute
+  '/job-prep': typeof JobPrepRoute
+  '/learning-plan': typeof LearningPlanRoute
   '/profile': typeof ProfileRoute
   '/recommendations': typeof RecommendationsRoute
+  '/skill-gap': typeof SkillGapRoute
   '/skills': typeof SkillsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
+  '/assistant': typeof AssistantRoute
+  '/job-prep': typeof JobPrepRoute
+  '/learning-plan': typeof LearningPlanRoute
   '/profile': typeof ProfileRoute
   '/recommendations': typeof RecommendationsRoute
+  '/skill-gap': typeof SkillGapRoute
   '/skills': typeof SkillsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
+  '/assistant': typeof AssistantRoute
+  '/job-prep': typeof JobPrepRoute
+  '/learning-plan': typeof LearningPlanRoute
   '/profile': typeof ProfileRoute
   '/recommendations': typeof RecommendationsRoute
+  '/skill-gap': typeof SkillGapRoute
   '/skills': typeof SkillsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analysis' | '/profile' | '/recommendations' | '/skills'
+  fullPaths:
+    | '/'
+    | '/analysis'
+    | '/assistant'
+    | '/job-prep'
+    | '/learning-plan'
+    | '/profile'
+    | '/recommendations'
+    | '/skill-gap'
+    | '/skills'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analysis' | '/profile' | '/recommendations' | '/skills'
+  to:
+    | '/'
+    | '/analysis'
+    | '/assistant'
+    | '/job-prep'
+    | '/learning-plan'
+    | '/profile'
+    | '/recommendations'
+    | '/skill-gap'
+    | '/skills'
   id:
-    '__root__' | '/' | '/analysis' | '/profile' | '/recommendations' | '/skills'
+    | '__root__'
+    | '/'
+    | '/analysis'
+    | '/assistant'
+    | '/job-prep'
+    | '/learning-plan'
+    | '/profile'
+    | '/recommendations'
+    | '/skill-gap'
+    | '/skills'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalysisRoute: typeof AnalysisRoute
+  AssistantRoute: typeof AssistantRoute
+  JobPrepRoute: typeof JobPrepRoute
+  LearningPlanRoute: typeof LearningPlanRoute
   ProfileRoute: typeof ProfileRoute
   RecommendationsRoute: typeof RecommendationsRoute
+  SkillGapRoute: typeof SkillGapRoute
   SkillsRoute: typeof SkillsRoute
 }
 
@@ -96,6 +163,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnalysisRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/job-prep': {
+      id: '/job-prep'
+      path: '/job-prep'
+      fullPath: '/job-prep'
+      preLoaderRoute: typeof JobPrepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learning-plan': {
+      id: '/learning-plan'
+      path: '/learning-plan'
+      fullPath: '/learning-plan'
+      preLoaderRoute: typeof LearningPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -108,6 +196,13 @@ declare module '@tanstack/react-router' {
       path: '/recommendations'
       fullPath: '/recommendations'
       preLoaderRoute: typeof RecommendationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skill-gap': {
+      id: '/skill-gap'
+      path: '/skill-gap'
+      fullPath: '/skill-gap'
+      preLoaderRoute: typeof SkillGapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/skills': {
@@ -123,8 +218,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalysisRoute: AnalysisRoute,
+  AssistantRoute: AssistantRoute,
+  JobPrepRoute: JobPrepRoute,
+  LearningPlanRoute: LearningPlanRoute,
   ProfileRoute: ProfileRoute,
   RecommendationsRoute: RecommendationsRoute,
+  SkillGapRoute: SkillGapRoute,
   SkillsRoute: SkillsRoute,
 }
 export const routeTree = rootRouteImport
