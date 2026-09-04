@@ -64,7 +64,7 @@ export function CareerProvider({ children }: { children: ReactNode }) {
       setProfile,
       skills,
       setSkills,
-      selectedCareer: CAREERS.find((c) => c.id === selectedCareerId) ?? CAREERS[0],
+      selectedCareer: (CAREERS.find((c) => c.id === selectedCareerId) ?? CAREERS[0]) as Career,
       setSelectedCareerId,
       analyzed,
       setAnalyzed,
