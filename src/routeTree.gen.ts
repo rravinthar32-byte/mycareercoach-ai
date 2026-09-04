@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnalysisRouteImport } from './routes/analysis'
 import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as JobPrepRouteImport } from './routes/job-prep'
 import { Route as LearningPlanRouteImport } from './routes/learning-plan'
 import { Route as ProfileRouteImport } from './routes/profile'
@@ -32,6 +33,11 @@ const AnalysisRoute = AnalysisRouteImport.update({
 const AssistantRoute = AssistantRouteImport.update({
   id: '/assistant',
   path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JobPrepRoute = JobPrepRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
   '/assistant': typeof AssistantRoute
+  '/dashboard': typeof DashboardRoute
   '/job-prep': typeof JobPrepRoute
   '/learning-plan': typeof LearningPlanRoute
   '/profile': typeof ProfileRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
   '/assistant': typeof AssistantRoute
+  '/dashboard': typeof DashboardRoute
   '/job-prep': typeof JobPrepRoute
   '/learning-plan': typeof LearningPlanRoute
   '/profile': typeof ProfileRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
   '/assistant': typeof AssistantRoute
+  '/dashboard': typeof DashboardRoute
   '/job-prep': typeof JobPrepRoute
   '/learning-plan': typeof LearningPlanRoute
   '/profile': typeof ProfileRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/analysis'
     | '/assistant'
+    | '/dashboard'
     | '/job-prep'
     | '/learning-plan'
     | '/profile'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/analysis'
     | '/assistant'
+    | '/dashboard'
     | '/job-prep'
     | '/learning-plan'
     | '/profile'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/analysis'
     | '/assistant'
+    | '/dashboard'
     | '/job-prep'
     | '/learning-plan'
     | '/profile'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalysisRoute: typeof AnalysisRoute
   AssistantRoute: typeof AssistantRoute
+  DashboardRoute: typeof DashboardRoute
   JobPrepRoute: typeof JobPrepRoute
   LearningPlanRoute: typeof LearningPlanRoute
   ProfileRoute: typeof ProfileRoute
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/assistant'
       fullPath: '/assistant'
       preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/job-prep': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalysisRoute: AnalysisRoute,
   AssistantRoute: AssistantRoute,
+  DashboardRoute: DashboardRoute,
   JobPrepRoute: JobPrepRoute,
   LearningPlanRoute: LearningPlanRoute,
   ProfileRoute: ProfileRoute,
